@@ -11,17 +11,19 @@ public class SoapDAOImpl implements SoapDAO {
 
 	@Override
 	public int save(SoapDTO entity) {
-		Configuration config = new Configuration();
-		config.configure();
-		config.addAnnotatedClass(SoapDTO.class);
-		SessionFactory fact = config.buildSessionFactory();
-		Session session = fact.openSession();
-		Transaction tax = session.beginTransaction();
-		int pk=(int)session.save(entity);
-		tax.commit();
+
+		Configuration conf = new Configuration();
+		conf.configure();
+		conf.addAnnotatedClass(SoapDTO.class);
+		SessionFactory fact = conf.buildSessionFactory();
+		Session sess = fact.openSession();
+		Transaction trans = sess.beginTransaction();
+		int pk = (int) sess.save(entity);
+		trans.commit();
 		System.out.println(pk);
-		session.close();
+		sess.close();
 		fact.close();
+
 		return pk;
 	}
 

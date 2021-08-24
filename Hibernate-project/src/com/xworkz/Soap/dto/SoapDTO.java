@@ -9,59 +9,42 @@ import javax.persistence.Table;
 import com.xworkz.Soap.constant.SoapType;
 
 @Entity
-@Table(name = "Soap_table")
+@Table(name = "soap_table")
 public class SoapDTO implements Serializable {
-	@Column(name = "S_ID")
+
+	@Column(name = "s_id")
 	@Id
 	private int id;
+	@Column(name = "s_brand")
 	private String brandAmbassador;
+	@Column(name = "s_odour")
 	private String odour;
+	@Column(name = "s_certified")
 	private boolean certified;
-	private boolean antiBacteria;
+	@Column(name = "s_antibacterial")
+	private boolean antiBacterial;
+	@Column(name = "s_type")
 	private SoapType type;
 
 	public SoapDTO() {
+
 	}
 
 	public SoapDTO(int id, String brandAmbassador, String odour, boolean certified, boolean antiBacteria,
 			SoapType type) {
 		super();
-
 		this.id = id;
 		this.brandAmbassador = brandAmbassador;
 		this.odour = odour;
 		this.certified = certified;
-		this.antiBacteria = antiBacteria;
+		this.antiBacterial = antiBacteria;
 		this.type = type;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SoapDTO other = (SoapDTO) obj;
-		if (id != other.id)
-			return false;
-		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "SoapDTO [id=" + id + ", brandAmbassador=" + brandAmbassador + ", odour=" + odour + ", certified="
-				+ certified + ", antiBacteria=" + antiBacteria + ", type=" + type + ", hashCode()=" + hashCode()
-				+ ", getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
+				+ certified + ", antiBacteria=" + antiBacterial + ", type=" + type + "]";
 	}
 
 	public int getId() {
@@ -97,11 +80,11 @@ public class SoapDTO implements Serializable {
 	}
 
 	public boolean isAntiBacteria() {
-		return antiBacteria;
+		return antiBacterial;
 	}
 
 	public void setAntiBacteria(boolean antiBacteria) {
-		this.antiBacteria = antiBacteria;
+		this.antiBacterial = antiBacteria;
 	}
 
 	public SoapType getType() {
@@ -111,5 +94,27 @@ public class SoapDTO implements Serializable {
 	public void setType(SoapType type) {
 		this.type = type;
 	}
-}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SoapDTO other = (SoapDTO) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
+}
